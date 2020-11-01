@@ -1,0 +1,133 @@
+h1 {
+  font-family: "Shrikhand", cursive;
+  text-align: center;
+}
+
+h2 {
+  font-family: "Shrikhand", cursive;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+body {
+  font-family: "Roboto", sans-serif;
+  font-size: 14px;
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  font-weight: bold;
+}
+
+.section1 {
+  text-align: center;
+  background-color: #f2f2f2;
+  padding-bottom: 15px;
+}
+
+.map {
+  background-color: #d3d3d3;
+  padding: 10px 0 10px 0;
+  border-top: grey solid 2px;
+  font-weight: 500;
+}
+
+button {
+  border-radius: 20px;
+  border: none;
+  width: 190px;
+  height: 40px;
+  color: white;
+  font-weight: bold;
+}
+
+.linear-gradient {
+  background: linear-gradient(to bottom right, #ff79da, #9356dc);
+}
+
+.section3 {
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 40px 15px 30px 15px;
+
+}
+
+.section3 a {
+  background-color: white;
+  width: 100%;
+  height: 200px;
+  border-radius: 15px;
+  color: black;margin-bottom: 15px;
+}
+
+.section3 img,
+.section3 figure {
+  background-position: bottom;
+  background-size: cover;
+  width: 100%;
+  height: 150px;
+  margin: auto;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+}
+
+.note img, .note figure {
+  background-position: center;
+}
+
+.palette figure {
+  background-image: url(Images/palette.jpg);
+}
+
+.note figure {
+  background-image: url(Images/note.jpg);
+}
+
+.française figure {
+  background-image: url(Images/française.jpg);
+}
+
+.délice figure {
+  background-image: url(Images/délice.jpg);
+}
+
+.new {
+  background-color: #99E2D0;
+  width: 70px;
+  height: 20px;
+  text-align: center;
+  font-weight: bold;
+  border-radius: 2px;
+  color: #2b9c80;
+  padding-top: 4px;
+  position: absolute;
+  left: 195px; bottom: 140px;
+}
+
+.section3 p {
+  padding-left: 10px;
+  padding-bottom: 5px;
+}
+
+.footer {
+  background-color: #333435;
+  width: 100%;
+  padding-bottom: 15px;
+  padding-top: 5px;
+}
+
+.footer .footer__link {
+  color: white;
+  list-style-type: none;
+  margin-left: 25px;
+}
+
+.footer .footer__link i {
+  padding-right: 5px;
+}
