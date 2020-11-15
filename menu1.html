@@ -15,34 +15,72 @@
 
 <body>
     <header>
-        <h1><a href="index.html"><i class="fas fa-arrow-left header__icone"></i></a>ohmyfood</h1> 
+        <h1><a href="index.html"><i class="fas fa-arrow-left header__icone"></i></a>ohmyfood</h1>
     </header>
 
     <main>
         <div class="menu__image"></div>
         <section class="menu">
-            <h1 class="menu__titre">La palette du goût<i class="far fa-heart menu__titre--icone"></i></h1>
-                <h4 class="menu__sstitre">Entrées</h4>
-                <p class="menu__carte"><span>Fricassée d'escargot</span><br>Au piment d'Espelette<span class="menu__carte--prix">25€</span></p>
-                <p class="menu__carte"><span>Foie gras de canard mi-cuit</span><br>Et ses copeaux de truffe noire<span class="menu__carte--prix">35€</span></p>
-                <p class="menu__carte"><span>Oeuf au plat</span><br>Assaisonné à la truffe sur lit de caviar<span class="menu__carte--prix">20€</span></p>
-                <h4 class="menu__sstitre">Plats</h4>
-                <p class="menu__carte"><span>Filet de boeuf aux herbes</span><br>Accompagné de sa ribambelle de légumes<span class="menu__carte--prix">40€</span></p>
-                <p class="menu__carte"><span>Parmentier de queue de boeuf</span><br>À la truffe noire sur sa purée de panais<span class="menu__carte--prix">35€</span></p>
-                <p class="menu__carte"><span>Filet de turbot</span><br>Aux agrumes<span class="menu__carte--prix">44€</span></p>
-                <h4 class="menu__sstitre">Desserts</h4>
-                <p class="menu__carte"><span>Paris-Brest</span><br>Revisité<span class="menu__carte--prix">18€</span></p>
-                <p class="menu__carte"><span>Macaron au chocolat d'exception</span><br>Et glace à la vanille de Madagascar<span class="menu__carte--prix">22€</span></p>
-                <p class="menu__carte"><span>Mousse au chocolat</span><br>Au piment d'Espelette et à la truffe noire<span class="menu__carte--prix">23€</span></p>
+            <h1 class="menu__titre">La palette du goût<i class="fas fa-heart menu__titre--icone"></i></h1>
+            <h4 class="menu__sstitre">Entrées</h4>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Fricassée d'escargot</h5>
+                <p class="menu__carte--texte">Au piment d'Espelette<span class="menu__carte--prix">25€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x checkbox--check"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Foie gras de canard mi-cuit</h5>
+                <p class="menu__carte--texte">Et ses copeaux de truffe noire<span class="menu__carte--prix">35€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Oeuf au plat</h5>
+                <p class="menu__carte--texte">Assaisonné à la truffe sur lit de caviar<span class="menu__carte--prix">20€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <h4 class="menu__sstitre">Plats</h4>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Filet de boeuf aux herbes</h5>
+                <p class="menu__carte--texte">Accompagné de sa ribambelle de légumes<span class="menu__carte--prix">40€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Parmentier de queue de boeuf</h5>
+                <p class="menu__carte--texte">À la truffe noire sur sa purée de panais<span class="menu__carte--prix">35€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Filet de turbot</h5>
+                <p class="menu__carte--texte">Aux agrumes<span class="menu__carte--prix">44€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <h4 class="menu__sstitre">Desserts</h4>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Paris-Brest</h5>
+                <p class="menu__carte--texte">Revisité<span class="menu__carte--prix">18€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Macaron au chocolat d'exception</h5>
+                <p class="menu__carte--texte">Et glace à la vanille de Madagascar<span class="menu__carte--prix">22€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
+            <div class="menu__carte">
+                <h5 class="menu__carte--titre">Mousse au chocolat</h5>
+                <p class="menu__carte--texte">Au piment d'Espelette et à la truffe noire<span class="menu__carte--prix">23€</span></p>
+                <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+            </div>
             <button class="menu__btn">Commander</button>
         </section>
     </main>
 
     <footer class="footer">
         <h2 class="footer__logo">ohmyfood</h1>
-            <li class="footer__logo footer__logo--list"><a href="#"><i class="fas fa-utensils footer__logo--list--icone"></i>Proposer un
+            <li class="footer__logo footer__logo--list"><a href="#"><i
+                        class="fas fa-utensils footer__logo--list--icone"></i>Proposer un
                     restaurant</a></li>
-            <li class="footer__logo footer__logo--list"><a href="#"><i class="fas fa-hands-helping fa-xs footer__logo--list--icone"></i>Devenir
+            <li class="footer__logo footer__logo--list"><a href="#"><i
+                        class="fas fa-hands-helping fa-xs footer__logo--list--icone"></i>Devenir
                     partenaire</a></li>
             <li class="footer__logo footer__logo--list"><a href="#">Mentions légales</a></li>
             <li class="footer__logo footer__logo--list"><a href="mailto: contact@ohmyfood.fr">Contact</a></li>

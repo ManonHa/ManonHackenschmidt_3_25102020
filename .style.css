@@ -2,11 +2,13 @@
 h1 {
   font-family: "Shrikhand", cursive;
   text-align: center;
+  font-size: 25px;
+  font-weight: normal;
 }
 
 h2 {
   font-family: "Shrikhand", cursive;
-  font-size: 18px;
+  font-size: 17px;
   font-weight: normal;
 }
 
@@ -16,7 +18,7 @@ h3 {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  font-size: 14px;
   margin: 0;
 }
 
@@ -52,6 +54,7 @@ span {
   color: white;
   font-weight: bold;
   background: linear-gradient(to bottom right, #ff79da, #9356dc);
+  box-shadow: 0 5px 5px #cccccc;
 }
 
 .section2 {
@@ -64,13 +67,13 @@ span {
 }
 .section2__ol--list {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 20px;
   color: black;
   position: relative;
   background-color: #f2f2f2;
-  padding: 15px 0 15px 0;
+  padding: 25px 0 25px 0;
   margin-bottom: 15px;
-  box-shadow: 6px 6px 4px #f2f2f2;
+  box-shadow: 0 5px 5px #cccccc;
 }
 .section2__ol--list--icone {
   padding: 0 20px 0 30px;
@@ -105,7 +108,7 @@ span {
 .section3__link {
   margin-bottom: 15px;
   background-color: white;
-  border-radius: 15px;
+  border-radius: 20px;
   color: black;
   position: relative;
 }
@@ -116,9 +119,14 @@ span {
   position: relative;
 }
 .section3__txt--coeur {
+  text-shadow: 0 0 1px black;
+  color: white;
   position: absolute;
   right: 10px;
   top: 2px;
+}
+.section3__txt--coeur:hover {
+  color: linear-gradient(#9356dc, #ff79da);
 }
 
 .section3 img,
@@ -128,8 +136,8 @@ span {
   width: 100%;
   height: 180px;
   margin: auto;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: 20px;
+  border-top-right-radius: 20px;
 }
 
 .note img,
@@ -204,11 +212,19 @@ span {
 
 .menu {
   background-color: #f2f2f2;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
   padding: 5px 10px 30px 10px;
   position: relative;
+}
+.menu::before {
+  content: "";
+  position: absolute;
+  height: 30px;
+  width: 100%;
   top: -30px;
+  left: 0;
+  background-color: #f2f2f2;
+  border-top-left-radius: 30px;
+  border-top-right-radius: 30px;
 }
 .menu__image {
   background-image: url(Images/palette.jpg);
@@ -221,8 +237,11 @@ span {
   text-align: left;
   padding-left: 5px;
   position: relative;
+  margin: 0;
 }
 .menu__titre--icone {
+  text-shadow: 0 0 1px black;
+  color: #f2f2f2;
   position: absolute;
   right: 25px;
   top: 5px;
@@ -231,17 +250,52 @@ span {
   padding-left: 5px;
   text-transform: uppercase;
   font-weight: normal;
+  position: relative;
+}
+.menu__sstitre::after {
+  content: "";
+  width: 40px;
+  height: 3px;
+  background-color: #99e2d0;
+  position: absolute;
+  bottom: -5px;
+  left: 5px;
 }
 .menu__carte {
   background-color: white;
-  border-radius: 15px;
+  border-radius: 20px;
   color: black;
   position: relative;
-  padding: 10px 20px 10px 10px;
-  line-height: 20px;
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 10px;
+  position: relative;
 }
-.menu__carte--prix {
-  text-align: right;
+.menu__carte:hover .checkbox {
+  width: 60px;
+  height: 100%;
+  border-bottom-right-radius: 20px;
+  border-top-right-radius: 20px;
+  background-color: #99e2d0;
+  color: white;
+  position: absolute;
+  right: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: checkbox 3s;
+  animation-fill-mode: forwards;
+}
+.menu__carte--titre {
+  margin: 0;
+  padding: 10px 10px 5px 10px;
+  font-size: 16px;
+}
+.menu__carte--texte {
+  margin: 0;
+  padding: 0 10px 10px 10px;
+  display: flex;
+  justify-content: space-between;
 }
 .menu__btn {
   border-radius: 20px;
@@ -251,7 +305,29 @@ span {
   color: white;
   font-weight: bold;
   background: linear-gradient(to bottom right, #ff79da, #9356dc);
-  text-align: center;
+  box-shadow: 0 5px 5px #cccccc;
+  display: block;
+  margin: auto;
+  margin-top: 30px;
+}
+
+.checkbox {
+  display: none;
+}
+.checkbox--check {
+  transition: transform 3s;
+}
+.checkbox:hover {
+  transform: rotate(360deg);
+}
+
+@keyframes checkbox {
+  from {
+    transform: translateX(60px);
+  }
+  to {
+    transform: translateX(0);
+  }
 }
 
 /*# sourceMappingURL=.style.css.map */

@@ -5,26 +5,39 @@ $color-bg: #f2f2f2;
 $color-black: black;
 $color-white: white;
 
+$radius-carte: 20px;
+$radius-menu: 30px;
+
+$size-body: 14px;
+$size-logo: 25px;
+$size-logo-footer: 17px;
+$size-h3: 20px;
+$size-small: 12px;
+$size-icone-header: 20px;
+$size-menu-titre: 16px;
+
 // SCSS général
 
 h1 {
   font-family: "Shrikhand", cursive;
   text-align: center;
+  font-size: $size-logo;
+  font-weight: normal;
 }
 
 h2 {
   font-family: "Shrikhand", cursive;
-  font-size: 18px;
+  font-size: $size-logo-footer;
   font-weight: normal;
 }
 
 h3 {
-  font-size: 20px;
+  font-size: $size-h3;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 15px;
+  font-size: $size-body;
   margin: 0;
 }
 
@@ -40,13 +53,13 @@ span {
 
 @mixin carte {
   background-color: $color-white;
-  border-radius: 15px;
+  border-radius: $radius-carte;
   color: $color-black;
   position: relative;
 }
 
 @mixin bouton {
-  border-radius: 20px;
+  border-radius: $radius-carte;
   border: none;
   width: 190px;
   height: 40px;
@@ -59,9 +72,17 @@ span {
   );
 }
 
+@mixin shadow($color: $color-bg) {
+  box-shadow: 0 5px 5px darken($color, 15%);
+}
+
 @mixin map-background($color: $color-bg) {
   background-color: darken($color, 5%);
   box-shadow: inset 0 7px 4px -5px darken($color, 15%);
+}
+
+@mixin coeur {
+  text-shadow: 0 0 1px black;
 }
 
 .section1 {
@@ -72,7 +93,7 @@ span {
     @include map-background;
     padding: 10px 0 10px 0;
     font-weight: 500;
-    font-size: 12px;
+    font-size: $size-small;
     &--icone {
       padding-right: 10px;
     }
@@ -80,6 +101,7 @@ span {
   &__btn {
     margin-top: 10px;
     @include bouton;
+    @include shadow;
   }
 }
 
@@ -94,9 +116,9 @@ span {
     &--list {
       @include carte;
       background-color: $color-bg;
-      padding: 15px 0 15px 0;
+      padding: 25px 0 25px 0;
       margin-bottom: 15px;
-      box-shadow: 6px 6px 4px $color-bg;
+      @include shadow;
       &--icone {
         padding: 0 20px 0 30px;
         color: grey;
@@ -114,7 +136,7 @@ span {
       position: absolute;
       left: -10px;
       text-align: center;
-      font-size: 12px;
+      font-size: $size-small;
       display: flex;
       justify-content: center;
       align-items: center;
@@ -145,9 +167,14 @@ span {
     @include texte-carte;
     position: relative;
     &--coeur {
+      @include coeur;
+      color: $color-white;
       position: absolute;
       right: 10px;
       top: 2px;
+      &:hover {
+        color: linear-gradient($color-primary, $color-secondary);
+      }
     }
   }
 }
@@ -159,8 +186,8 @@ span {
   width: 100%;
   height: 180px;
   margin: auto;
-  border-top-left-radius: 15px;
-  border-top-right-radius: 15px;
+  border-top-left-radius: $radius-carte;
+  border-top-right-radius: $radius-carte;
 }
 
 .note img,
@@ -195,7 +222,7 @@ span {
   height: 20px;
   text-align: center;
   font-weight: bold;
-  font-size: 12px;
+  font-size: $size-small;
   border-radius: 2px;
   @include color-new;
   padding-top: 4px;
@@ -236,18 +263,26 @@ span {
     position: absolute;
     left: 20px;
     top: 30px;
-    font-size: 20px;
+    font-size: $size-icone-header;
     color: $color-black;
   }
 }
 
 .menu {
   background-color: $color-bg;
-  border-top-left-radius: 30px;
-  border-top-right-radius: 30px;
   padding: 5px 10px 30px 10px;
   position: relative;
-  top: -30px;
+  &::before {
+    content: "";
+    position: absolute;
+    height: 30px;
+    width: 100%;
+    top: -30px;
+    left: 0;
+    background-color: $color-bg;
+    border-top-left-radius: $radius-menu;
+    border-top-right-radius: $radius-menu;
+  }
   &__image {
     background-image: url(Images/palette.jpg);
     background-position: center;
@@ -259,7 +294,10 @@ span {
     text-align: left;
     padding-left: 5px;
     position: relative;
+    margin: 0;
     &--icone {
+      @include coeur;
+      color: $color-bg;
       position: absolute;
       right: 25px;
       top: 5px;
@@ -269,18 +307,75 @@ span {
     padding-left: 5px;
     text-transform: uppercase;
     font-weight: normal;
+    position: relative;
+    &::after {
+      content: "";
+      width: 40px;
+      height: 3px;
+      background-color: $color-tertiaire;
+      position: absolute;
+      bottom: -5px; left: 5px;
+    }
   }
   &__carte {
     @include carte;
-    padding: 10px 20px 10px 10px;
-    line-height: 20px;
-    &--prix {
-        text-align: right;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 10px;
+    position: relative;
+    &:hover .checkbox {
+      width: 60px;
+      height: 100%;
+      border-bottom-right-radius: $radius-carte;
+      border-top-right-radius: $radius-carte;
+      background-color: $color-tertiaire;
+      color: $color-white;
+      position: absolute;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      animation: checkbox 3s;
+      animation-fill-mode: forwards;
+    }
+    &--titre {
+      margin: 0;
+      padding: 10px 10px 5px 10px;
+      font-size: $size-menu-titre;
+    }
+    &--texte {
+      margin: 0;
+      padding: 0 10px 10px 10px;
+      display: flex;
+      justify-content: space-between;
     }
   }
   &__btn {
     @include bouton;
-    text-align: center;
+    @include shadow;
+    display: block;
+    margin: auto;
+    margin-top: 30px;
   }
 }
 
+.checkbox {
+  display: none;
+  &--check {
+    transition: transform 3s;
+  }
+  &:hover {
+    transform: rotate(360deg);
+  }
+
+}
+
+@keyframes checkbox {
+  from {
+    transform: translateX(60px);
+  }
+
+  to {
+    transform: translateX(0);
+  }
+}
