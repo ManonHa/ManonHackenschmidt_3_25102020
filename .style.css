@@ -56,6 +56,11 @@ span {
   background: linear-gradient(to bottom right, #ff79da, #9356dc);
   box-shadow: 0 5px 5px #cccccc;
 }
+.section1__btn:hover {
+  opacity: 0.85;
+  box-shadow: 0 8px 5px #a6a6a6;
+  transition: all 300ms;
+}
 
 .section2 {
   margin: 40px 10px 60px 15px;
@@ -74,6 +79,12 @@ span {
   padding: 25px 0 25px 0;
   margin-bottom: 15px;
   box-shadow: 0 5px 5px #cccccc;
+}
+.section2__ol--list:hover {
+  background-color: #f2eafb;
+}
+.section2__ol--list:hover i {
+  color: #9356dc;
 }
 .section2__ol--list--icone {
   padding: 0 20px 0 30px;
@@ -261,41 +272,52 @@ span {
   bottom: -5px;
   left: 5px;
 }
+.menu ul {
+  padding-left: 0;
+}
 .menu__carte {
   background-color: white;
   border-radius: 20px;
   color: black;
   position: relative;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   margin-bottom: 10px;
   position: relative;
+  cursor: pointer;
+  overflow: hidden;
 }
 .menu__carte:hover .checkbox {
   width: 60px;
-  height: 100%;
-  border-bottom-right-radius: 20px;
-  border-top-right-radius: 20px;
-  background-color: #99e2d0;
-  color: white;
-  position: absolute;
-  right: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  animation: checkbox 3s;
-  animation-fill-mode: forwards;
 }
-.menu__carte--titre {
+.menu__carte:hover .checkbox i {
+  transform: rotate(360deg);
+  transition: all 500ms ease-in-out;
+}
+.menu__carte-plat {
+  flex-direction: column;
+  flex-grow: 2;
+  min-width: 0;
+  white-space: nowrap;
+}
+.menu__carte-plat--titre {
   margin: 0;
   padding: 10px 10px 5px 10px;
   font-size: 16px;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
-.menu__carte--texte {
+.menu__carte-plat--texte {
   margin: 0;
-  padding: 0 10px 10px 10px;
-  display: flex;
-  justify-content: space-between;
+  padding: 0 20px 10px 10px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  min-width: 0;
+  position: relative;
+}
+.menu__carte-plat--texte span {
+  position: absolute;
+  right: 10px;
 }
 .menu__btn {
   border-radius: 20px;
@@ -310,24 +332,19 @@ span {
   margin: auto;
   margin-top: 30px;
 }
+.menu__btn:hover {
+  box-shadow: 0 5px 5px #a6a6a6;
+  opacity: 0.6;
+}
 
 .checkbox {
-  display: none;
-}
-.checkbox--check {
-  transition: transform 3s;
-}
-.checkbox:hover {
-  transform: rotate(360deg);
-}
-
-@keyframes checkbox {
-  from {
-    transform: translateX(60px);
-  }
-  to {
-    transform: translateX(0);
-  }
+  width: 0;
+  background-color: #99e2d0;
+  color: white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms ease-in-out;
 }
 
 /*# sourceMappingURL=.style.css.map */

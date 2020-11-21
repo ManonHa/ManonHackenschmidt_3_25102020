@@ -4,9 +4,12 @@ $color-tertiaire: #99e2d0;
 $color-bg: #f2f2f2;
 $color-black: black;
 $color-white: white;
+$color-btn: linear-gradient(to bottom right, $color-secondary, $color-primary);
 
-$radius-carte: 20px;
-$radius-menu: 30px;
+$radius: (
+  carte: 20px,
+  menu: 30px,
+);
 
 $size-body: 14px;
 $size-logo: 25px;
@@ -53,23 +56,19 @@ span {
 
 @mixin carte {
   background-color: $color-white;
-  border-radius: $radius-carte;
+  border-radius: map-get($radius, carte);
   color: $color-black;
   position: relative;
 }
 
 @mixin bouton {
-  border-radius: $radius-carte;
+  border-radius: map-get($radius, carte);
   border: none;
   width: 190px;
   height: 40px;
   color: $color-white;
   font-weight: bold;
-  background: linear-gradient(
-    to bottom right,
-    $color-secondary,
-    $color-primary
-  );
+  background: $color-btn;
 }
 
 @mixin shadow($color: $color-bg) {
@@ -102,6 +101,11 @@ span {
     margin-top: 10px;
     @include bouton;
     @include shadow;
+    &:hover {
+      opacity: 0.85;
+      box-shadow: 0 8px 5px darken($color-bg, 30%);
+      transition: all 300ms;
+    }
   }
 }
 
@@ -119,6 +123,12 @@ span {
       padding: 25px 0 25px 0;
       margin-bottom: 15px;
       @include shadow;
+      &:hover {
+        background-color: lighten($color-primary, 35%);
+        i {
+          color: $color-primary;
+        }
+      }
       &--icone {
         padding: 0 20px 0 30px;
         color: grey;
@@ -186,8 +196,8 @@ span {
   width: 100%;
   height: 180px;
   margin: auto;
-  border-top-left-radius: $radius-carte;
-  border-top-right-radius: $radius-carte;
+  border-top-left-radius: map-get($radius, carte);
+  border-top-right-radius: map-get($radius, carte);
 }
 
 .note img,
@@ -280,8 +290,8 @@ span {
     top: -30px;
     left: 0;
     background-color: $color-bg;
-    border-top-left-radius: $radius-menu;
-    border-top-right-radius: $radius-menu;
+    border-top-left-radius: map-get($radius, menu);
+    border-top-right-radius: map-get($radius, menu);
   }
   &__image {
     background-image: url(Images/palette.jpg);
@@ -314,40 +324,52 @@ span {
       height: 3px;
       background-color: $color-tertiaire;
       position: absolute;
-      bottom: -5px; left: 5px;
+      bottom: -5px;
+      left: 5px;
     }
+  }
+  ul {
+    padding-left: 0;
   }
   &__carte {
     @include carte;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     margin-bottom: 10px;
     position: relative;
+    cursor: pointer;
+    overflow: hidden;
     &:hover .checkbox {
       width: 60px;
-      height: 100%;
-      border-bottom-right-radius: $radius-carte;
-      border-top-right-radius: $radius-carte;
-      background-color: $color-tertiaire;
-      color: $color-white;
-      position: absolute;
-      right: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      animation: checkbox 3s;
-      animation-fill-mode: forwards;
+      i {
+        transform: rotate(360deg);
+        transition: all 500ms ease-in-out;
+      }
     }
-    &--titre {
-      margin: 0;
-      padding: 10px 10px 5px 10px;
-      font-size: $size-menu-titre;
-    }
-    &--texte {
-      margin: 0;
-      padding: 0 10px 10px 10px;
-      display: flex;
-      justify-content: space-between;
+    &-plat {
+      flex-direction: column;
+      flex-grow: 2;
+      min-width: 0;
+      white-space: nowrap;
+      &--titre {
+        margin: 0;
+        padding: 10px 10px 5px 10px;
+        font-size: $size-menu-titre;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+      &--texte {
+        margin: 0;
+        padding: 0 20px 10px 10px;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        min-width: 0;
+        position: relative;
+        span {
+          position: absolute;
+          right: 10px;
+        }
+      }
     }
   }
   &__btn {
@@ -356,26 +378,19 @@ span {
     display: block;
     margin: auto;
     margin-top: 30px;
+    &:hover {
+      box-shadow: 0 5px 5px darken($color-bg, 30%);
+      opacity: 0.6;
+    }
   }
 }
 
 .checkbox {
-  display: none;
-  &--check {
-    transition: transform 3s;
-  }
-  &:hover {
-    transform: rotate(360deg);
-  }
-
-}
-
-@keyframes checkbox {
-  from {
-    transform: translateX(60px);
-  }
-
-  to {
-    transform: translateX(0);
-  }
+  width: 0;
+  background-color: $color-tertiaire;
+  color: $color-white;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 500ms ease-in-out;
 }
