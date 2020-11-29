@@ -18,7 +18,7 @@ h3 {
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: 14px;
+  font-size: 13px;
   margin: 0;
 }
 
@@ -57,7 +57,7 @@ span {
   box-shadow: 0 5px 5px #cccccc;
 }
 .section1__btn:hover {
-  opacity: 0.85;
+  opacity: 80%;
   box-shadow: 0 8px 5px #a6a6a6;
   transition: all 300ms;
 }
@@ -108,6 +108,14 @@ span {
   align-items: center;
 }
 
+@keyframes coeur-remplissage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
 .section3 {
   background-color: #f2f2f2;
   display: flex;
@@ -137,7 +145,13 @@ span {
   top: 2px;
 }
 .section3__txt--coeur:hover {
-  color: linear-gradient(#9356dc, #ff79da);
+  text-shadow: none;
+  animation: coeur-remplissage 1s;
+}
+.section3__txt--coeur:hover::before {
+  background: -webkit-linear-gradient(#9356dc, #ff79da);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 
 .section3 img,
@@ -221,6 +235,16 @@ span {
   color: black;
 }
 
+@keyframes menu {
+  from {
+    opacity: 0;
+    top: 50px;
+  }
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
 .menu {
   background-color: #f2f2f2;
   padding: 5px 10px 30px 10px;
@@ -284,8 +308,12 @@ span {
   flex-direction: row;
   margin-bottom: 10px;
   position: relative;
+  top: 50px;
+  opacity: 0;
   cursor: pointer;
   overflow: hidden;
+  animation: menu 500ms;
+  animation-fill-mode: forwards;
 }
 .menu__carte:hover .checkbox {
   width: 60px;
@@ -303,13 +331,13 @@ span {
 .menu__carte-plat--titre {
   margin: 0;
   padding: 10px 10px 5px 10px;
-  font-size: 16px;
+  font-size: 15px;
   overflow: hidden;
   text-overflow: ellipsis;
 }
 .menu__carte-plat--texte {
   margin: 0;
-  padding: 0 20px 10px 10px;
+  padding: 0 35px 10px 10px;
   overflow: hidden;
   text-overflow: ellipsis;
   min-width: 0;
@@ -333,8 +361,21 @@ span {
   margin-top: 30px;
 }
 .menu__btn:hover {
-  box-shadow: 0 5px 5px #a6a6a6;
-  opacity: 0.6;
+  opacity: 80%;
+  box-shadow: 0 8px 5px #a6a6a6;
+  transition: all 300ms;
+}
+
+.menu__carte:nth-child(1) {
+  animation-delay: 200ms;
+}
+
+.menu__carte:nth-child(2) {
+  animation-delay: 400ms;
+}
+
+.menu__carte:nth-child(3) {
+  animation-delay: 600ms;
 }
 
 .checkbox {
@@ -345,6 +386,48 @@ span {
   align-items: center;
   justify-content: center;
   transition: all 500ms ease-in-out;
+}
+
+@keyframes loading-spinner {
+  from {
+    transform: rotate(0) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(2);
+  }
+  to {
+    transform: rotate(0) scale(1);
+  }
+}
+.spinner {
+  position: relative;
+}
+
+.load {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+}
+.load__1 {
+  width: 20px;
+  height: 20px;
+  background-color: #9356dc;
+  animation: loading-spinner 1500ms 300ms backwards 3 ease-in-out alternate;
+}
+.load__2 {
+  width: 20px;
+  height: 20px;
+  background-color: #ff79da;
+  margin: 0 30px 0 30px;
+  animation: loading-spinner 1500ms 600ms backwards 3 ease-in-out alternate;
+}
+.load__3 {
+  width: 20px;
+  height: 20px;
+  background-color: #99e2d0;
+  animation: loading-spinner 1500ms 900ms backwards 3 ease-in-out alternate;
 }
 
 /*# sourceMappingURL=.style.css.map */

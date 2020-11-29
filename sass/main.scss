@@ -11,13 +11,13 @@ $radius: (
   menu: 30px,
 );
 
-$size-body: 14px;
+$size-body: 13px;
 $size-logo: 25px;
 $size-logo-footer: 17px;
 $size-h3: 20px;
 $size-small: 12px;
 $size-icone-header: 20px;
-$size-menu-titre: 16px;
+$size-menu-titre: 15px;
 
 // SCSS général
 
@@ -84,6 +84,12 @@ span {
   text-shadow: 0 0 1px black;
 }
 
+@mixin animation-bouton {
+  opacity: 80%;
+      box-shadow: 0 8px 5px darken($color-bg, 30%);
+      transition: all 300ms;
+}
+
 .section1 {
   text-align: center;
   background-color: $color-bg;
@@ -102,9 +108,7 @@ span {
     @include bouton;
     @include shadow;
     &:hover {
-      opacity: 0.85;
-      box-shadow: 0 8px 5px darken($color-bg, 30%);
-      transition: all 300ms;
+      @include animation-bouton;
     }
   }
 }
@@ -162,6 +166,15 @@ span {
   margin: 10px 0 5px 0;
 }
 
+@keyframes coeur-remplissage {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
 .section3 {
   background-color: $color-bg;
   display: flex;
@@ -183,11 +196,19 @@ span {
       right: 10px;
       top: 2px;
       &:hover {
-        color: linear-gradient($color-primary, $color-secondary);
+        text-shadow: none;
+        animation: coeur-remplissage 1s;
+        &::before {
+          background: -webkit-linear-gradient(#9356dc, #ff79da);
+          -webkit-background-clip: text;
+          -webkit-text-fill-color: transparent;
+        }
       }
     }
   }
 }
+
+
 
 .section3 img,
 .section3 figure {
@@ -278,6 +299,18 @@ span {
   }
 }
 
+@keyframes menu {
+  from {
+    opacity: 0;
+    top: 50px;
+  }
+
+  to {
+    opacity: 1;
+    top: 0;
+  }
+}
+
 .menu {
   background-color: $color-bg;
   padding: 5px 10px 30px 10px;
@@ -337,8 +370,12 @@ span {
     flex-direction: row;
     margin-bottom: 10px;
     position: relative;
+    top: 50px;
+    opacity: 0;
     cursor: pointer;
     overflow: hidden;
+    animation: menu 500ms;
+    animation-fill-mode: forwards;
     &:hover .checkbox {
       width: 60px;
       i {
@@ -360,7 +397,7 @@ span {
       }
       &--texte {
         margin: 0;
-        padding: 0 20px 10px 10px;
+        padding: 0 35px 10px 10px;
         overflow: hidden;
         text-overflow: ellipsis;
         min-width: 0;
@@ -379,11 +416,25 @@ span {
     margin: auto;
     margin-top: 30px;
     &:hover {
-      box-shadow: 0 5px 5px darken($color-bg, 30%);
-      opacity: 0.6;
+      @include animation-bouton;
     }
   }
 }
+
+
+
+.menu__carte:nth-child(1) {
+  animation-delay: 200ms;
+}
+
+.menu__carte:nth-child(2) {
+  animation-delay: 400ms;
+}
+
+.menu__carte:nth-child(3) {
+  animation-delay: 600ms;
+}
+
 
 .checkbox {
   width: 0;
@@ -394,3 +445,47 @@ span {
   justify-content: center;
   transition: all 500ms ease-in-out;
 }
+
+@keyframes loading-spinner {
+  from {
+    transform: rotate(0) scale(1) ;
+  }
+
+  50% {
+    transform: rotate(180deg) scale(2) ;
+  }
+  to {
+    transform: rotate(0) scale(1) ;
+  }
+}
+
+.spinner {
+  position: relative;
+}
+    
+.load {
+  width: 100%;
+  height: 100px;
+  position: absolute;
+  display: flex;
+  justify-content: center;
+    &__1 {
+      width: 20px;
+      height: 20px;
+      background-color: $color-primary;
+      animation: loading-spinner 1500ms 300ms backwards 3 ease-in-out alternate;
+    }
+    &__2 {
+      width: 20px;
+      height: 20px;
+      background-color: $color-secondary;
+      margin: 0 30px 0 30px;
+      animation: loading-spinner 1500ms 600ms backwards 3 ease-in-out alternate;
+    }
+    &__3 {
+      width: 20px;
+      height: 20px;
+      background-color: $color-tertiaire;
+      animation: loading-spinner 1500ms 900ms backwards 3 ease-in-out alternate;
+    }
+  }
