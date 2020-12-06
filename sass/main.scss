@@ -11,36 +11,46 @@ $radius: (
   menu: 30px,
 );
 
-$size-body: 13px;
-$size-logo: 25px;
-$size-logo-footer: 17px;
-$size-h3: 20px;
-$size-small: 12px;
-$size-icone-header: 20px;
-$size-menu-titre: 15px;
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1024px,
+);
+
+$size: (
+  body: 13px,
+  smaller: 12px,
+  logo: 25px,
+  logo-footer: 17px,
+  titre-body: 20px,
+  icone-header: 20px,
+  titre-menu: 15px,
+);
 
 // SCSS général
 
 h1 {
   font-family: "Shrikhand", cursive;
   text-align: center;
-  font-size: $size-logo;
+  font-size: map-get($size, logo);
   font-weight: normal;
+  margin: 0;
+  padding: 15px;
 }
 
 h2 {
   font-family: "Shrikhand", cursive;
-  font-size: $size-logo-footer;
+  font-size: map-get($size, logo-footer);
   font-weight: normal;
 }
 
 h3 {
-  font-size: $size-h3;
+  font-size: map-get($size, titre-body);
+  width: 100%;
 }
 
 body {
   font-family: "Roboto", sans-serif;
-  font-size: $size-body;
+  font-size: map-get($size, body);
   margin: 0;
 }
 
@@ -69,6 +79,10 @@ span {
   color: $color-white;
   font-weight: bold;
   background: $color-btn;
+  @include shadow;
+    &:hover {
+      @include animation-bouton;
+    }
 }
 
 @mixin shadow($color: $color-bg) {
@@ -90,6 +104,12 @@ span {
       transition: all 300ms;
 }
 
+@mixin texte-carte {
+  padding-left: 10px;
+  line-height: 20px;
+  margin: 10px 0 5px 0;
+}
+
 .section1 {
   text-align: center;
   background-color: $color-bg;
@@ -98,7 +118,8 @@ span {
     @include map-background;
     padding: 10px 0 10px 0;
     font-weight: 500;
-    font-size: $size-small;
+    font-size: map-get($size, smaller);
+    margin: 0;
     &--icone {
       padding-right: 10px;
     }
@@ -106,10 +127,7 @@ span {
   &__btn {
     margin-top: 10px;
     @include bouton;
-    @include shadow;
-    &:hover {
-      @include animation-bouton;
-    }
+    
   }
 }
 
@@ -150,7 +168,7 @@ span {
       position: absolute;
       left: -10px;
       text-align: center;
-      font-size: $size-small;
+      font-size: map-get($size, smaller);
       display: flex;
       justify-content: center;
       align-items: center;
@@ -159,12 +177,6 @@ span {
 }
 
 // section 3 (carte resto)
-
-@mixin texte-carte {
-  padding-left: 10px;
-  line-height: 20px;
-  margin: 10px 0 5px 0;
-}
 
 @keyframes coeur-remplissage {
   from {
@@ -182,9 +194,17 @@ span {
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 30px 15px 30px 15px;
+  @media screen and (min-width: map-get($breakpoints, desktop)) {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
   &__link {
     margin-bottom: 15px;
     @include carte;
+    @media (min-width: map-get($breakpoints, desktop)) {
+      width: 400px;
+  }
   }
   &__txt {
     @include texte-carte;
@@ -197,7 +217,7 @@ span {
       top: 2px;
       &:hover {
         text-shadow: none;
-        animation: coeur-remplissage 1s;
+        animation: coeur-remplissage 1s ease-in-out;
         &::before {
           background: -webkit-linear-gradient(#9356dc, #ff79da);
           -webkit-background-clip: text;
@@ -253,7 +273,7 @@ span {
   height: 20px;
   text-align: center;
   font-weight: bold;
-  font-size: $size-small;
+  font-size: map-get($size, smaller);
   border-radius: 2px;
   @include color-new;
   padding-top: 4px;
@@ -293,8 +313,8 @@ span {
   &__icone {
     position: absolute;
     left: 20px;
-    top: 30px;
-    font-size: $size-icone-header;
+    top: 25px;
+    font-size: map-get($size, icone-header);
     color: $color-black;
   }
 }
@@ -391,7 +411,7 @@ span {
       &--titre {
         margin: 0;
         padding: 10px 10px 5px 10px;
-        font-size: $size-menu-titre;
+        font-size: map-get($size, titre-menu);
         overflow: hidden;
         text-overflow: ellipsis;
       }
@@ -411,15 +431,12 @@ span {
   }
   &__btn {
     @include bouton;
-    @include shadow;
     display: block;
     margin: auto;
     margin-top: 30px;
-    &:hover {
-      @include animation-bouton;
-    }
   }
 }
+
 
 
 
@@ -449,13 +466,34 @@ span {
 @keyframes loading-spinner {
   from {
     transform: rotate(0) scale(1) ;
+    opacity: 1;
+    border-radius: 0;
   }
-
   50% {
     transform: rotate(180deg) scale(2) ;
+    border-radius: 50%;
+  }
+  95% {
+    opacity: 1;
+    border-radius: 0;
   }
   to {
     transform: rotate(0) scale(1) ;
+    opacity: 0;
+  }
+}
+
+@keyframes load {
+  from {
+    opacity: 1;
+  }
+
+95% {
+  opacity: 0;
+  height: 100vh;
+}
+  to {
+    height: 0;
   }
 }
 
@@ -465,27 +503,32 @@ span {
     
 .load {
   width: 100%;
-  height: 100px;
-  position: absolute;
+  height: 100vh;
+  position: fixed;
   display: flex;
   justify-content: center;
+  align-items: center;
+  background-color: $color-white;
+  z-index: 1000;
+  animation: load 500ms 2500ms forwards;
+  overflow: hidden;
     &__1 {
       width: 20px;
       height: 20px;
       background-color: $color-primary;
-      animation: loading-spinner 1500ms 300ms backwards 3 ease-in-out alternate;
+      animation: loading-spinner 800ms 300ms forwards 2 ease-in-out alternate;
     }
     &__2 {
       width: 20px;
       height: 20px;
       background-color: $color-secondary;
       margin: 0 30px 0 30px;
-      animation: loading-spinner 1500ms 600ms backwards 3 ease-in-out alternate;
+      animation: loading-spinner 800ms 600ms forwards 2 ease-in-out alternate;
     }
     &__3 {
       width: 20px;
       height: 20px;
       background-color: $color-tertiaire;
-      animation: loading-spinner 1500ms 900ms backwards 3 ease-in-out alternate;
+      animation: loading-spinner 800ms 900ms forwards 2 ease-in-out alternate;
     }
   }
