@@ -26,6 +26,11 @@ $size: (
   titre-menu: 15px,
 );
 
+@mixin gd-ecran($max-width: 1024px) {
+  max-width: 1024px;
+  margin: auto;
+}
+
 // SCSS général
 
 h1 {
@@ -62,6 +67,18 @@ span {
   font-weight: bold;
 }
 
+main {
+  @include gd-ecran;
+}
+
+header {
+  @include gd-ecran($max-width: 1200px);
+}
+
+footer {
+  @include gd-ecran($max-width: 1200px);
+}
+
 // début SCSS section
 
 @mixin carte {
@@ -80,9 +97,9 @@ span {
   font-weight: bold;
   background: $color-btn;
   @include shadow;
-    &:hover {
-      @include animation-bouton;
-    }
+  &:hover {
+    @include animation-bouton;
+  }
 }
 
 @mixin shadow($color: $color-bg) {
@@ -100,8 +117,20 @@ span {
 
 @mixin animation-bouton {
   opacity: 80%;
-      box-shadow: 0 8px 5px darken($color-bg, 30%);
-      transition: all 300ms;
+  box-shadow: 0 8px 5px darken($color-bg, 30%);
+  transition: all 300ms;
+}
+
+@mixin anim-coeur {
+  &:hover {
+    text-shadow: none;
+    animation: coeur-remplissage 1s ease-in-out;
+    &::before {
+      background: -webkit-linear-gradient(#9356dc, #ff79da);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+  }
 }
 
 @mixin texte-carte {
@@ -131,7 +160,6 @@ span {
   &__btn {
     margin-top: 10px;
     @include bouton;
-    
   }
 }
 
@@ -153,11 +181,10 @@ span {
       margin-bottom: 15px;
       text-align: left;
       @include shadow;
-      @media screen and (min-width:map-get($breakpoints, tablet)) {
+      @media screen and (min-width: map-get($breakpoints, tablet)) {
         margin: 20px auto;
         width: 400px;
       }
-
       &:hover {
         background-color: lighten($color-primary, 35%);
         i {
@@ -226,15 +253,7 @@ span {
       position: absolute;
       right: 10px;
       top: 2px;
-      &:hover {
-        text-shadow: none;
-        animation: coeur-remplissage 1s ease-in-out;
-        &::before {
-          background: -webkit-linear-gradient(#9356dc, #ff79da);
-          -webkit-background-clip: text;
-          -webkit-text-fill-color: transparent;
-        }
-      }
+      @include anim-coeur;
     }
   }
 }
@@ -349,7 +368,8 @@ span {
       color: $color-bg;
       position: absolute;
       right: 25px;
-      top: 5px;
+      top: 20px;
+      @include anim-coeur;
     }
   }
   &__sstitre {
@@ -357,8 +377,10 @@ span {
     text-transform: uppercase;
     font-weight: normal;
     position: relative;
-    @media screen and (min-width:map-get($breakpoints, tablet)) {
+    display: block;
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
       text-align: center;
+      padding-left: 0;
     }
     &::after {
       content: "";
@@ -368,8 +390,8 @@ span {
       position: absolute;
       bottom: -5px;
       left: 5px;
-      @media screen and (min-width: map-get($breakpoints, tablet)){
-        left: 485px;
+      @media screen and (min-width: map-get($breakpoints, tablet)) {
+        left: calc(50% - 20px);
       }
     }
   }
@@ -388,7 +410,7 @@ span {
     overflow: hidden;
     animation: menu 500ms;
     animation-fill-mode: forwards;
-    @media screen and (min-width:map-get($breakpoints, tablet)) {
+    @media screen and (min-width: map-get($breakpoints, tablet)) {
       width: 450px;
       margin: 10px auto;
     }
@@ -433,9 +455,6 @@ span {
   }
 }
 
-
-
-
 .menu__carte:nth-child(1) {
   animation-delay: 200ms;
 }
@@ -447,7 +466,6 @@ span {
 .menu__carte:nth-child(3) {
   animation-delay: 600ms;
 }
-
 
 .checkbox {
   width: 0;
@@ -461,12 +479,12 @@ span {
 
 @keyframes loading-spinner {
   from {
-    transform: rotate(0) scale(1) ;
+    transform: rotate(0) scale(1);
     opacity: 1;
     border-radius: 0;
   }
   50% {
-    transform: rotate(180deg) scale(2) ;
+    transform: rotate(180deg) scale(2);
     border-radius: 50%;
   }
   95% {
@@ -474,7 +492,7 @@ span {
     border-radius: 0;
   }
   to {
-    transform: rotate(0) scale(1) ;
+    transform: rotate(0) scale(1);
     opacity: 0;
   }
 }
@@ -484,10 +502,10 @@ span {
     opacity: 1;
   }
 
-95% {
-  opacity: 0;
-  height: 100vh;
-}
+  95% {
+    opacity: 0;
+    height: 100vh;
+  }
   to {
     height: 0;
   }
@@ -496,7 +514,7 @@ span {
 .spinner {
   position: relative;
 }
-    
+
 .load {
   width: 100%;
   height: 100vh;
@@ -508,23 +526,23 @@ span {
   z-index: 1000;
   animation: load 500ms 2500ms forwards;
   overflow: hidden;
-    &__1 {
-      width: 20px;
-      height: 20px;
-      background-color: $color-primary;
-      animation: loading-spinner 800ms 300ms forwards 2 ease-in-out alternate;
-    }
-    &__2 {
-      width: 20px;
-      height: 20px;
-      background-color: $color-secondary;
-      margin: 0 30px 0 30px;
-      animation: loading-spinner 800ms 600ms forwards 2 ease-in-out alternate;
-    }
-    &__3 {
-      width: 20px;
-      height: 20px;
-      background-color: $color-tertiaire;
-      animation: loading-spinner 800ms 900ms forwards 2 ease-in-out alternate;
-    }
+  &__1 {
+    width: 20px;
+    height: 20px;
+    background-color: $color-primary;
+    animation: loading-spinner 800ms 300ms forwards 2 ease-in-out alternate;
   }
+  &__2 {
+    width: 20px;
+    height: 20px;
+    background-color: $color-secondary;
+    margin: 0 30px 0 30px;
+    animation: loading-spinner 800ms 600ms forwards 2 ease-in-out alternate;
+  }
+  &__3 {
+    width: 20px;
+    height: 20px;
+    background-color: $color-tertiaire;
+    animation: loading-spinner 800ms 900ms forwards 2 ease-in-out alternate;
+  }
+}
