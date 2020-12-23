@@ -9,45 +9,106 @@
     <link
         href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap"
         rel="stylesheet">
+    <link rel="shortcut icon" type="image/png" href="/favicon.png"/>
     <script src="https://kit.fontawesome.com/c9f3f525dd.js" crossorigin="anonymous"></script>
     <title>ohmyfood</title>
 </head>
 
 <body>
     <header>
-        <h1><a href="index.html"><i class="fas fa-arrow-left"></i></a></i>ohmyfood</h1>
+        <h1><a href="index.html"><i class="fas fa-arrow-left header__icone"></i></a>ohmyfood</h1>
     </header>
 
     <main>
-        <section>
-            <h1>Le délice des sens<i class="far fa-heart"></i></h1>
-            <div class="entrées">
-                <h3>Entrées</h3>
-                <p>Tartare de thon<br>Assaisonné au yuzu<br>25€</p>
-                <p>Bouchée de homard croustillant<br>Et sa farandole de petits légumes<br>35€</p>
-                <p>Velouté de cèpes<br>Aux truffes<br>20€</p>
-            </div>
-            <div class="plats">
-                <h3>Plats</h3>
-                <p>Poulet rôti aux herbes de Provence<br>Et sa crème de truffe<br>40€</p>
-                <p>Langouste rôtie<br>Et ses légumes de saison<br>35€</p>
-                <p>Côte de boeuf Angus<br>Et sa purée de panais<br>44€</p>
-            </div>
-            <div class="desserts">
-                <h3>Desserts</h3>
-                <p>Farandole de desserts<br>Du chef<br>18€</p>
-                <p>Crème brulée<br>Revisité<br>22€</p>
-                <p>Tiramisu<br>À la noisette<br>23€</p>
-            </div>
-            <button class="linear-gradient">Commander</button>
+        <img src="Images/délice.jpg" class="menu__image">
+        <section class="menu">
+            <h1 class="menu__titre">Le délice du sens<i class="fas fa-heart menu__titre--icone"></i></h1>
+            <h4 class="menu__sstitre">Entrées</h4>
+            <ul>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Tartare de thon</h5>
+                        <p class="carte__plat--texte">Assaisonné au yuzu<span>25€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x checkbox--rotation"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Bouchée de homard croustillant</h5>
+                        <p class="carte__plat--texte">Et sa farandole de petits légumes<span>35€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Velouté de cèpes</h5>
+                        <p class="carte__plat--texte">Aux truffes<span>20€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+            </ul>
+            <h4 class="menu__sstitre">Plats</h4>
+            <ul>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Poulet rôti aux herbes de Provence</h5>
+                        <p class="carte__plat--texte">Et sa crème de truffe<span>40€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Langouste rôtie</h5>
+                        <p class="carte__plat--texte">Et ses légumes de saison<span>35€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Côte de boeuf Angus</h5>
+                        <p class="carte__plat--texte">Et sa purée de panais<span>44€</span>
+                        </p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+            </ul>
+            <h4 class="menu__sstitre">Desserts</h4>
+            <ul>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Farandole de desserts</h5>
+                        <p class="carte__plat--texte">Du chef<span>18€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Crème brûlée</h5>
+                        <p class="carte__plat--texte">Revisitée<span>22€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+                <li class="carte">
+                    <div class="carte__plat">
+                        <h5 class="carte__plat--titre">Tiramisu</h5>
+                        <p class="carte__plat--texte">À la noisette<span>23€</span></p>
+                    </div>
+                    <div class="checkbox"><i class="fas fa-check-circle fa-2x"></i></div>
+                </li>
+            </ul>
+            <button class="btn">Commander</button>
         </section>
     </main>
 
     <footer class="footer">
-        <h2 class="footer__link">ohmyfood</h1>
-            <p class="footer__link footer__link--icone"><i class="fas fa-utensils"></i>Proposer un restaurant</p>
-            <p class="footer__link footer__link--icone"><i class="fas fa-hands-helping fa-xs"></i>Devenir partenaire</p>
-            <p class="footer__link">Mentions légales</p>
-            <p class="footer__link"><a href="mailto: contact@ohmyfood.fr">Contact</a></p>
+        <h2 class="footer__logo">ohmyfood</h1>
+            <li class="footer__list"><a href="#"><i
+                        class="fas fa-utensils footer__list--icone"></i>Proposer un
+                    restaurant</a></li>
+            <li class="footer__list"><a href="#"><i
+                        class="fas fa-hands-helping fa-xs footer__list--icone"></i>Devenir
+                    partenaire</a></li>
+            <li class="footer__list"><a href="#">Mentions légales</a></li>
+            <li class="footer__list"><a href="mailto: contact@ohmyfood.fr">Contact</a></li>
     </footer>
 </body>
