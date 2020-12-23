@@ -1,35 +1,5 @@
-$color-primary: #9356dc;
-$color-secondary: #ff79da;
-$color-tertiaire: #99e2d0;
-$color-bg: #f2f2f2;
-$color-black: black;
-$color-white: white;
-$color-btn: linear-gradient(to bottom right, $color-secondary, $color-primary);
-
-$radius: (
-  carte: 20px,
-  menu: 30px,
-);
-
-$breakpoints: (
-  tablet: 768px,
-  desktop: 1024px,
-);
-
-$size: (
-  body: 13px,
-  smaller: 12px,
-  logo: 25px,
-  logo-footer: 17px,
-  titre-body: 20px,
-  icone-header: 20px,
-  titre-menu: 15px,
-);
-
-@mixin gd-ecran($max-width: 1024px) {
-  max-width: 1024px;
-  margin: auto;
-}
+@import "./utils/variables";
+@import "./Utils/mixin";
 
 // SCSS général
 
@@ -38,6 +8,8 @@ h1 {
   text-align: center;
   font-size: map-get($size, logo);
   font-weight: normal;
+  margin: 0;
+  padding: 15px;
 }
 
 h2 {
@@ -49,6 +21,9 @@ h2 {
 h3 {
   font-size: map-get($size, titre-body);
   width: 100%;
+  @media screen and (min-width: map-get($breakpoints, tablet)) {
+    text-align: center;
+  }
 }
 
 body {
@@ -79,68 +54,6 @@ footer {
 
 // début SCSS section
 
-@mixin carte {
-  background-color: $color-white;
-  border-radius: map-get($radius, carte);
-  color: $color-black;
-  position: relative;
-}
-
-@mixin bouton {
-  border-radius: map-get($radius, carte);
-  border: none;
-  width: 190px;
-  height: 40px;
-  color: $color-white;
-  font-weight: bold;
-  background: $color-btn;
-  @include shadow;
-  &:hover {
-    @include animation-bouton;
-  }
-}
-
-@mixin shadow($color: $color-bg) {
-  box-shadow: 0 5px 5px darken($color, 15%);
-}
-
-@mixin map-background($color: $color-bg) {
-  background-color: darken($color, 5%);
-  box-shadow: inset 0 7px 4px -5px darken($color, 15%);
-}
-
-@mixin coeur {
-  text-shadow: 0 0 1px black;
-}
-
-@mixin animation-bouton {
-  opacity: 80%;
-  box-shadow: 0 8px 5px darken($color-bg, 30%);
-  transition: all 300ms;
-}
-
-@mixin anim-coeur {
-  &:hover {
-    text-shadow: none;
-    animation: coeur-remplissage 1s ease-in-out;
-    &::before {
-      background: -webkit-linear-gradient(#9356dc, #ff79da);
-      -webkit-background-clip: text;
-      -webkit-text-fill-color: transparent;
-    }
-  }
-}
-
-@mixin texte-carte {
-  padding-left: 10px;
-  line-height: 20px;
-  margin: 10px 0 5px 0;
-}
-
-@mixin color-new($color: $color-tertiaire) {
-  color: darken($color, 35%);
-}
-
 .section1 {
   text-align: center;
   background-color: $color-bg;
@@ -158,7 +71,6 @@ footer {
 }
 
 .btn {
-  margin-top: 10px;
   @include bouton;
 }
 
@@ -166,9 +78,6 @@ footer {
 
 .section2 {
   margin: 40px 10px 60px 15px;
-  @media screen and (min-width: map-get($breakpoints, tablet)) {
-    text-align: center;
-  }
   &__ol {
     counter-reset: liste;
     list-style: none;
@@ -233,7 +142,7 @@ footer {
   justify-content: space-around;
   flex-wrap: wrap;
   padding: 30px 15px 30px 15px;
-  @media screen and (min-width: map-get($breakpoints, desktop)) {
+  @media screen and (min-width: map-get($breakpoints, tablet)) {
     display: flex;
     flex-direction: row;
     flex-wrap: wrap;
@@ -329,7 +238,6 @@ footer {
     opacity: 0;
     top: 50px;
   }
-
   to {
     opacity: 1;
     top: 0;
@@ -361,7 +269,7 @@ footer {
     text-align: left;
     padding-left: 5px;
     position: relative;
-    margin: 0;
+    padding: 0;
     &--icone {
       @include coeur;
       color: $color-bg;
@@ -394,6 +302,7 @@ footer {
       }
     }
   }
+}
 
   ul {
     padding-left: 0;
@@ -449,14 +358,6 @@ footer {
     }
   }
 
-  .btn {
-    @include bouton;
-    display: block;
-    margin: auto;
-    margin-top: 30px;
-  }
-}
-
 .carte:nth-child(1) {
   animation-delay: 200ms;
 }
@@ -503,7 +404,6 @@ footer {
   from {
     opacity: 1;
   }
-
   95% {
     opacity: 0;
     height: 100vh;

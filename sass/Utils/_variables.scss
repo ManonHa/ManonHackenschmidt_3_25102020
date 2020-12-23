@@ -1,0 +1,27 @@
+$color-primary: #9356dc;
+$color-secondary: #ff79da;
+$color-tertiaire: #99e2d0;
+$color-bg: #f2f2f2;
+$color-black: black;
+$color-white: white;
+$color-btn: linear-gradient(to bottom right, $color-secondary, $color-primary);
+
+$radius: (
+  carte: 20px,
+  menu: 30px,
+);
+
+$breakpoints: (
+  tablet: 768px,
+  desktop: 1024px,
+);
+
+$size: (
+  body: 13px,
+  smaller: 12px,
+  logo: 25px,
+  logo-footer: 17px,
+  titre-body: 20px,
+  icone-header: 20px,
+  titre-menu: 15px,
+);
